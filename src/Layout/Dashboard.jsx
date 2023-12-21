@@ -1,47 +1,34 @@
 import { NavLink, Outlet } from "react-router-dom";
-import useAuth from "../Hooks/useAuth";
-import {
-  FaBars,
-  FaClipboardList,
-  FaHome,
-  FaUser,
-
-} from "react-icons/fa";
+import { FaBars, FaClipboardList, FaHome, FaUser } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 const Dashboard = () => {
-  const user = useAuth();
-
   const navLink = (
     <>
-
-        <li>
-          <NavLink
-            to="/taskBoard/home"
-            className="flex items-center px-4 py-2 "
-          >
-            <FaHome className="mr-2" />
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/taskBoard/allTask"
-            className="flex items-center px-4 py-2 "
-          >
-            <FaUser className="mr-2" />
-            All Tasks
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/taskBoard/manageTask"
-            className="flex items-center px-4 py-2 "
-          >
-            <FaClipboardList className="mr-2" />
-            My Tasks
-          </NavLink>
-        </li>
+      <li>
+        <NavLink to="/taskBoard/home" className="flex items-center px-4 py-2 ">
+          <FaHome className="mr-2" />
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/taskBoard/allTask"
+          className="flex items-center px-4 py-2 "
+        >
+          <FaUser className="mr-2" />
+          All Tasks
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/taskBoard/manageTask"
+          className="flex items-center px-4 py-2 "
+        >
+          <FaClipboardList className="mr-2" />
+          My Tasks
+        </NavLink>
+      </li>
       <div className="divider"></div>
     </>
   );
@@ -87,7 +74,6 @@ const Dashboard = () => {
       <div className="hidden md:flex gap-5">
         <div className="">
           <ul className="menu bg-gray-500 h-screen px-5 text-white space-y-3 w-52 fixed">
-            
             {navLink}
           </ul>
         </div>

@@ -9,54 +9,62 @@ import PrivateRoute from "./PrivateRoute";
 import TaskHome from "../Pages/TaskBoard/Home/Home";
 import AllTasks from "../Pages/TaskBoard/AllTasks/AllTasks";
 import ManageTask from "../Pages/TaskBoard/ManageTask/ManageTask";
-
+import AddTask from "../Pages/TaskBoard/AddTask/AddTask";
 
 const Router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
-    children:[
-      {
-        path: '/',
-        element: <Home></Home>
-      },
-      {
-        path: '/',
-        element: <Home></Home>
-      },
-      {
-        path: '/',
-        element: <Home></Home>
-      },
-    ]
-  },
-  {
-    path: '/taskBoard',
-    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
-        path: '/taskBoard/home',
-        element: <TaskHome></TaskHome>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path: '/taskBoard/allTask',
-        element: <AllTasks></AllTasks>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path: '/taskBoard/manageTask',
-        element: <ManageTask></ManageTask>
+        path: "/",
+        element: <Home></Home>,
       },
-    ]
+    ],
   },
   {
-    path: '/login',
-    element: <Login></Login>
+    path: "/taskBoard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/taskBoard/home",
+        element: <TaskHome></TaskHome>,
+      },
+      {
+        path: "/taskBoard/allTask",
+        element: <AllTasks></AllTasks>,
+      },
+      {
+        path: "/taskBoard/manageTask",
+        element: <ManageTask></ManageTask>,
+      },
+      {
+        path: "/taskBoard/addTask",
+        element: <AddTask></AddTask>,
+      },
+    ],
   },
   {
-    path: '/register',
-    element: <Register></Register>
+    path: "/login",
+    element: <Login></Login>,
   },
-])
+  {
+    path: "/register",
+    element: <Register></Register>,
+  },
+]);
 
 export default Router;

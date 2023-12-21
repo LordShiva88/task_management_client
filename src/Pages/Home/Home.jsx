@@ -1,5 +1,4 @@
 import Navbar from "../Shared/Navbar/Navbar";
-
 const Home = () => {
   return (
     <div className="mt-20">

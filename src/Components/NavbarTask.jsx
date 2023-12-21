@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import logo from "../assets/logo.png";
 import { IoMdAdd, IoMdNotificationsOutline } from "react-icons/io";
 import useAuth from "../Hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const NavbarTask = () => {
   const { logOut } = useAuth();
@@ -18,10 +19,12 @@ const NavbarTask = () => {
         <p className="text-xl font-bold text-red-400">Task Magnet</p>
       </div>
       <div className="flex-none md:gap-5 gap-2">
-        <button className="flex items-center gap-1 btn btn-sm btn-outline">
-          {" "}
-          <IoMdAdd className="text-2xl"></IoMdAdd> Add Task
-        </button>
+        <Link
+          to={"/taskBoard/addTask"}
+          className="flex items-center gap-1 btn btn-sm btn-outline"
+        >
+          Add Task <IoMdAdd className="text-2xl"></IoMdAdd>
+        </Link>
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">

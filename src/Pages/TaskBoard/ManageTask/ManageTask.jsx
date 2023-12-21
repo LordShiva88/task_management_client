@@ -1,10 +1,12 @@
 import NavbarTask from "../../../Components/NavbarTask";
+import Nodata from "../../../Components/Nodata";
+import Details from "./Detialis";
 
 const ManageTask = () => {
   return (
     <div>
       <NavbarTask/>
-      <h1>TaskManagment</h1>
+      <Details></Details>
     </div>
   );
 };
