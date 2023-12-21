@@ -1,104 +1,44 @@
 import Navbar from "../Shared/Navbar/Navbar";
 
 const Home = () => {
-  const data = [
-    {
-      taskId: 1,
-      title: "Complete Project Proposal",
-      description:
-        "Write a detailed project proposal including scope, goals, and timeline.",
-      status: "In Progress",
-      priority: "High",
-      deadline: "2023-02-28",
-    },
-    {
-      taskId: 2,
-      title: "Design Landing Page",
-      description: "Create a visually appealing landing page for the website.",
-      status: "Pending",
-      priority: "Medium",
-      deadline: "2023-03-15",
-      assignedTo: {
-        userId: 101,
-        username: "designer123",
-        fullName: "Alice Designer",
-      },
-    },
-    {
-      taskId: 3,
-      title: "Develop User Authentication",
-      description:
-        "Implement user authentication functionality for the application.",
-      status: "To Do",
-      priority: "High",
-      deadline: "2023-04-10",
-      subtasks: [
-        {
-          subtaskId: 1,
-          title: "Create Login Page",
-          status: "To Do",
-        },
-        {
-          subtaskId: 2,
-          title: "Implement Backend Authentication",
-          status: "In Progress",
-        },
-        {
-          subtaskId: 3,
-          title: "Design Registration Form",
-          status: "Pending",
-        },
-      ],
-    },
-  ];
-
   return (
     <div className="mt-20">
       <Navbar></Navbar>
-      {data.map((task) => (
-        <div
-          key={task.taskId}
-          className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4"
-          draggable
-        >
-          <svg
-            className="w-7 h-7 text-gray-500 dark:text-gray-400 mb-3"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M18 5h-.7c.229-.467.349-.98.351-1.5a3.5 3.5 0 0 0-3.5-3.5c-1.717 0-3.215 1.2-4.331 2.481C8.4.842 6.949 0 5.5 0A3.5 3.5 0 0 0 2 3.5c.003.52.123 1.033.351 1.5H2a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2ZM8.058 5H5.5a1.5 1.5 0 0 1 0-3c.9 0 2 .754 3.092 2.122-.219.337-.392.635-.534.878Zm6.1 0h-3.742c.933-1.368 2.371-3 3.739-3a1.5 1.5 0 0 1 0 3h.003ZM11 13H9v7h2v-7Zm-4 0H2v5a2 2 0 0 0 2 2h3v-7Zm6 0v7h3a2 2 0 0 0 2-2v-5h-5Z" />
-          </svg>
-          <a href="#">
-            <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              Need a help in Claim?
-            </h5>
-          </a>
-          <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-            Go to this step by step guideline process on how to certify for your
-            weekly benefits:
-          </p>
-          <a
-            href="#"
-            className="inline-flex items-center text-blue-600 hover:underline"
-          >
-            See our guideline
-            <svg
-              className="w-3 h-3 ms-2.5 rtl:rotate-[270deg]"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 18 18"
-            >
-              <path
-                stroke="currentColor"
-                d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778"
-              />
-            </svg>
-          </a>
+      <section className="bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)] bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-white/75 sm:bg-transparent from-white/95 to-white/25 bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
+        <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
+          <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
+            <h1 className="text-3xl font-extrabold sm:text-5xl">
+              Let us find your
+              <strong className="block font-extrabold text-rose-700">
+                {" "}
+                Forever Home.{" "}
+              </strong>
+            </h1>
+
+            <p className="mt-4 max-w-lg sm:text-xl/relaxed">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
+              illo tenetur fuga ducimus numquam ea!
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4 text-center">
+              <a
+                href="#"
+                className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+              >
+                Get Started
+              </a>
+
+              <a
+                href="#"
+                className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
         </div>
-      ))}
+      </section>
     </div>
   );
 };

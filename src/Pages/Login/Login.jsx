@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import SocialLogin from "./SocialLogin";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
@@ -13,9 +13,9 @@ const Login = () => {
 
   // Authentication-related hooks and utilities
   const { logIn } = useAuth();
-  const location = useLocation();
+  // const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || "/";
+  // const from = location.state?.from?.pathname || "/";
 
   // React Hook Form for form validation and submission
   const {
@@ -30,7 +30,7 @@ const Login = () => {
       .then((res) => {
         if (res.user) {
           toast.success("Login Successful");
-          // navigate(from);
+          navigate('/taskBoard');
         }
       })
       .catch((error) => toast.error(error.message));

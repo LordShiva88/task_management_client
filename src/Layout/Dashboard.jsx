@@ -14,10 +14,10 @@ const Dashboard = () => {
 
   const navLink = (
     <>
-      <>
+
         <li>
           <NavLink
-            to="/dashboard/adminHome"
+            to="/taskBoard/home"
             className="flex items-center px-4 py-2 "
           >
             <FaHome className="mr-2" />
@@ -26,7 +26,7 @@ const Dashboard = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/users"
+            to="/taskBoard/allTask"
             className="flex items-center px-4 py-2 "
           >
             <FaUser className="mr-2" />
@@ -35,14 +35,13 @@ const Dashboard = () => {
         </li>
         <li>
           <NavLink
-            to="/dashboard/surveyRequest"
+            to="/taskBoard/manageTask"
             className="flex items-center px-4 py-2 "
           >
             <FaClipboardList className="mr-2" />
             My Tasks
           </NavLink>
         </li>
-      </>
       <div className="divider"></div>
     </>
   );

@@ -29,8 +29,8 @@ const Navbar = () => {
   // };
 
   const navbarStyle = {
-    backgroundColor: scrolling ? "white" : "rgba(0, 0, 0, 0.2)",
-    color: scrolling ? "black" : "white",
+    backgroundColor: scrolling ? "black" : "rgba(0, 0, 0, 0)",
+    color: scrolling ? "black" : "black",
   };
 
   const navLinks = [
@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <div
-      className="navbar fixed top-0 text-golden font-bold opacity shadow-md"
+      className="navbar fixed top-0 z-10 text-golden font-bold opacity shadow-md"
       style={navbarStyle}
     >
       <div className="container mx-auto flex justify-between">

@@ -1,11 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
-import ErrorPage from "../Pages/ErrorPage";
+import ErrorPage from "../Pages/Error/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import TaskBoard from "../Pages/TaskBoard/TaskBoard";
 import Dashboard from "../Layout/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import TaskHome from "../Pages/TaskBoard/Home/Home";
+import AllTasks from "../Pages/TaskBoard/AllTasks/AllTasks";
+import ManageTask from "../Pages/TaskBoard/ManageTask/ManageTask";
 
 
 const Router = createBrowserRouter([
@@ -30,12 +33,20 @@ const Router = createBrowserRouter([
   },
   {
     path: '/taskBoard',
-    element: <Dashboard></Dashboard>,
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
-        path: '',
-        element: <TaskBoard></TaskBoard>
-      }
+        path: '/taskBoard/home',
+        element: <TaskHome></TaskHome>
+      },
+      {
+        path: '/taskBoard/allTask',
+        element: <AllTasks></AllTasks>
+      },
+      {
+        path: '/taskBoard/manageTask',
+        element: <ManageTask></ManageTask>
+      },
     ]
   },
   {
