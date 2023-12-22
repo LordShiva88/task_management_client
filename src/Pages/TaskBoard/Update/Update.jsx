@@ -9,7 +9,7 @@ const Update = () => {
   const axios = useAxios();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const [tasks, isPending] = useTasks();
+  const [tasks] = useTasks();
   const { id } = useParams();
   const findTask = tasks.find((task) => task._id === id);
 
@@ -19,10 +19,6 @@ const Update = () => {
     formState: { errors },
     reset,
   } = useForm();
-
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
 
   const onSubmit = (data) => {
     // Data contains all form field values

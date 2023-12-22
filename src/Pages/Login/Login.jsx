@@ -8,16 +8,10 @@ import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
-  // State for toggling password visibility
   const [showPassword, setShowPassword] = useState(false);
-
-  // Authentication-related hooks and utilities
   const { logIn } = useAuth();
-  // const location = useLocation();
   const navigate = useNavigate();
-  // const from = location.state?.from?.pathname || "/";
 
-  // React Hook Form for form validation and submission
   const {
     register,
     handleSubmit,
@@ -30,7 +24,7 @@ const Login = () => {
       .then((res) => {
         if (res.user) {
           toast.success("Login Successful");
-          navigate('/taskBoard');
+          navigate("/taskBoard/allTask");
         }
       })
       .catch((error) => toast.error(error.message));

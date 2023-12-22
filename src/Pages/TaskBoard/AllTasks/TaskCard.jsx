@@ -1,4 +1,4 @@
-
+import moment from "moment";
 import {
   AiOutlineClockCircle,
   AiFillCheckCircle,
@@ -54,14 +54,15 @@ const TaskCard = ({ task }) => {
       <div className="p-4">
         <h3 className="text-xl font-bold mb-2">{task.title}</h3>
         <p className="text-gray-600 mb-4">{task.description.slice(0, 100)}</p>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between md:flex-row flex-col gap-3">
           <div className="flex items-center text-sm text-gray-500">
-            <AiOutlineClockCircle className="mr-1" />
+            <AiOutlineClockCircle className="mr-1 text-red-500 text-xl" />
             Deadline: {task.deadline}
           </div>
-          <span className="text-sm text-gray-500">
-            Assigned to: {task.email}
-          </span>
+          <div className="flex items-center text-sm text-gray-500">
+            <AiOutlineClockCircle className="mr-1 text-red-500 text-xl" />
+            Posted: {moment(task.date).calendar()}
+          </div>
         </div>
       </div>
       <div className="bg-gray-100 p-4 flex justify-between items-center">

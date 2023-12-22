@@ -11,6 +11,7 @@ import AllTasks from "../Pages/TaskBoard/AllTasks/AllTasks";
 import ManageTask from "../Pages/TaskBoard/ManageTask/ManageTask";
 import AddTask from "../Pages/TaskBoard/AddTask/AddTask";
 import Update from "../Pages/TaskBoard/Update/Update";
+import Profile from "../Components/Profile";
 
 const Router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const Router = createBrowserRouter([
       {
         path: "/taskBoard/update/:id",
         element: <Update></Update>,
+      },
+      {
+        path: "/taskBoard/profile",
+        element: <Profile></Profile>,
       },
     ],
   },

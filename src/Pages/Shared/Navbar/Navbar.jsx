@@ -1,50 +1,15 @@
-import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { FaBars } from "react-icons/fa";
 const Navbar = () => {
-  const [scrolling, setScrolling] = useState(false);
-  const handleScroll = () => {
-    if (window.scrollY > 0) {
-      setScrolling(true);
-    } else {
-      setScrolling(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // const handleLogOut = () => {
-  //   logOut()
-  //     .then((res) => {
-  //       console.log(res);
-  //       toast.success("Logout Successful!!");
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
-
-  const navbarStyle = {
-    backgroundColor: scrolling ? "black" : "rgba(0, 0, 0, 0)",
-    color: scrolling ? "black" : "black",
-  };
-
   const navLinks = [
     { to: "/", text: "Home" },
-    { to: "/surveys", text: "Surveys" },
     { to: "/login", text: "Login" },
     { to: "/register", text: "Register" },
   ];
 
   return (
-    <div
-      className="navbar fixed top-0 z-10 text-golden font-bold opacity shadow-md"
-      style={navbarStyle}
-    >
+    <div className="navbar fixed top-0 z-10 text-golden font-bold opacity shadow-md bg-gradient-to-b from-gray-800 to-gray-700 text-white">
       <div className="container mx-auto flex justify-between">
         <div className="hidden md:flex items-center">
           <img src={logo} alt="Logo" className="w-20" />
@@ -76,8 +41,19 @@ const Navbar = () => {
               ></label>
               <ul className="menu bg-gray-500 h-screen px-5 text-white space-y-3 w-60 fixed">
                 <div className="flex items-center gap-2">
-                  <img src={logo} alt="" className="w-10" />
-                  <p className="text-xl font-bold text-red-400">Survey Sift</p>
+                  <div className="flex items-center">
+                    <img src={logo} alt="Logo" className="w-10" />
+                    <span
+                      style={{
+                        color: "#ff0000",
+                        fontSize: "1.5rem",
+                        fontWeight: "bold",
+                        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+                      }}
+                    >
+                      TaskMagnet
+                    </span>
+                  </div>
                 </div>
                 {navLinks.map((link) => (
                   <li key={link.to}>

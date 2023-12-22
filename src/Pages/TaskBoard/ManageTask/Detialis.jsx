@@ -8,16 +8,9 @@ import { Link } from "react-router-dom";
 
 const Details = () => {
   const { user } = useAuth();
-  const [tasks, refetch, isPending] = useTasks()
-
+  const [tasks, refetch] = useTasks();
   const axios = useAxios();
-
-  // if (isPending) {
-  //   return <div>Loading...</div>;
-  // }
   const myTasks = tasks.filter((task) => task.email === user?.email);
-
-  console.log(myTasks)
 
   const handleDelete = (taskId) => {
     Swal.fire({
@@ -137,11 +130,6 @@ const Details = () => {
                 </td>
               </tr>
             ))}
-
-            
-
-
-
           </tbody>
         </table>
       </div>

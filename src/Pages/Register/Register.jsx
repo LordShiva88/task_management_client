@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
@@ -7,15 +7,10 @@ import SocialLogin from "../Login/SocialLogin";
 import { useState } from "react";
 import { updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
-
-// Pass = 123Aa@
-// Email: litonnath4184@gmaill.com
-
+import ImageHost from "../../Hooks/ImageHost";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
-  const { createUser, user } = useAuth();
-
+  const { createUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -24,6 +19,9 @@ const Register = () => {
 
   const handleCreateUser = async (data) => {
     try {
+      const image = { image: data.photo[0] };
+      const userImage = await ImageHost(image);
+      console.log(userImage)
       const result = await createUser(data.email, data.password);
       if (result) {
         toast.success("Registered Successfully!");
@@ -31,7 +29,7 @@ const Register = () => {
       const { user } = result;
       await updateProfile(user, {
         displayName: data.name,
-        // photoURL: userImage,
+        photoURL: userImage,
       });
     } catch (error) {
       toast.error(error.message);
@@ -137,11 +135,11 @@ const Register = () => {
               <input
                 type="file"
                 className="file-input file-input-bordered w-full max-w-xs text-black"
-                // {...register("photo")}
+                {...register("photo")}
               />
-              {/* {errors.photo && (
+              {errors.photo && (
                 <span className="text-red-500">This field is required</span>
-              )} */}
+              )}
             </div>
 
             <div className="flex items-center">

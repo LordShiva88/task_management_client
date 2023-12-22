@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const AllTasks = () => {
   const [tasks, refetch] = useTasks();
-  const [allTasks, setTasks] = useState([]); 
+  const [allTasks, setTasks] = useState([]);
   const axios = useAxios();
 
   const updateTaskStatusInMongoDB = async (taskId, newStatus) => {
@@ -36,7 +36,7 @@ const AllTasks = () => {
       updatedTasks.splice(result.destination.index, 0, movedTask);
 
       await updateTaskStatusInMongoDB(taskId, destinationId);
-      refetch()
+      refetch();
     }
 
     setTasks(updatedTasks);
