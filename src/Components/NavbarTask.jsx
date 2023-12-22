@@ -16,7 +16,7 @@ const NavbarTask = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 flex justify-between">
+    <div className="navbar bg-base-100 flex justify-between mb-10">
       <img src={logo} alt="" className="w-16 md:hidden flex" />
       <div className="hidden md:flex">
         <Logo />

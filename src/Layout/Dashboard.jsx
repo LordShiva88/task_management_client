@@ -9,7 +9,7 @@ const Dashboard = () => {
       <li>
         <NavLink
           to="/taskBoard/allTask"
-          className="flex items-center px-4 py-2 "
+          className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-300"
         >
           <FaUser className="mr-2" />
           All Tasks
@@ -18,17 +18,17 @@ const Dashboard = () => {
       <li>
         <NavLink
           to="/taskBoard/manageTask"
-          className="flex items-center px-4 py-2 "
+          className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-300"
         >
           <FaClipboardList className="mr-2" />
           My Tasks
         </NavLink>
       </li>
-      <div className="divider"></div>
+      <div className="divider border-t my-2"></div>
       <li>
         <NavLink
           to="/"
-          className="flex items-center px-4 py-2 "
+          className="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-300"
         >
           <FaHome className="mr-2" />
           Home
@@ -49,7 +49,7 @@ const Dashboard = () => {
                 aria-label="open sidebar"
                 className="btn btn-square btn-ghost"
               >
-                <FaBars></FaBars>
+                <FaBars className="text-2xl"></FaBars>
               </label>
             </div>
             <div className="flex-1 px-2 mx-2 navbar-end">
@@ -65,8 +65,8 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-gray-500 h-screen fixed z-10 px-5 text-white space-y-3">
-            <div className="flex items-center gap-2">
+          <ul className="menu bg-gray-800 h-screen fixed z-10 px-5 text-white space-y-4">
+            <div className="flex items-center justify-center my-4">
               <Logo />
             </div>
             {navLink}
@@ -75,8 +75,8 @@ const Dashboard = () => {
       </div>
       {/* Desktop navigation */}
       <div className="hidden md:flex gap-5">
-        <div className="">
-          <ul className="menu bg-gray-500 h-screen px-5 text-white space-y-3 w-52 fixed">
+        <div className="mt-20 border">
+          <ul className="menu h-screen px-5 text-white space-y-3 w-52 fixed">
             {navLink}
           </ul>
         </div>

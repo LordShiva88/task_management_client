@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
@@ -11,6 +11,7 @@ import ImageHost from "../../Hooks/ImageHost";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createUser } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,10 +22,11 @@ const Register = () => {
     try {
       const image = { image: data.photo[0] };
       const userImage = await ImageHost(image);
-      console.log(userImage)
+      console.log(userImage);
       const result = await createUser(data.email, data.password);
       if (result) {
         toast.success("Registered Successfully!");
+        navigate("/taskBoard/allTask");
       }
       const { user } = result;
       await updateProfile(user, {
