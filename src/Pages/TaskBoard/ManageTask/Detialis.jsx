@@ -1,27 +1,47 @@
-import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useTasks from "../../../Hooks/useTasks";
 import moment from "moment";
 import { HiPencil, HiTrash } from "react-icons/hi";
+import useAxios from "../../../Hooks/useAxios";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Details = () => {
   const { user } = useAuth();
-  const [tasks, refetch, isPending] = useTasks();
+  const [tasks, refetch, isPending] = useTasks()
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
+  const axios = useAxios();
 
+  // if (isPending) {
+  //   return <div>Loading...</div>;
+  // }
   const myTasks = tasks.filter((task) => task.email === user?.email);
 
-  const handleDelete = (taskId) => {
-    // Add logic for deleting task
-    console.log(`Deleting task with ID: ${taskId}`);
-  };
+  console.log(myTasks)
 
-  const handleUpdate = (taskId) => {
-    // Add logic for updating task
-    console.log(`Updating task with ID: ${taskId}`);
+  const handleDelete = (taskId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`tasks/${taskId}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
+      }
+    });
   };
 
   // Helper function to get priority color
@@ -101,22 +121,27 @@ const Details = () => {
                     {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
                   </span>
                 </td>
-                <td className="py-3 px-4">
-                  <button
-                    onClick={() => handleUpdate(task._id)}
+                <td className="py-3 px-4 flex">
+                  <Link
+                    to={`/taskBoard/update/${task._id}`}
                     className="text-blue-500 hover:underline mx-2"
                   >
-                    <HiPencil />
-                  </button>
+                    <HiPencil className="text-2xl" />
+                  </Link>
                   <button
                     onClick={() => handleDelete(task._id)}
                     className="text-red-500 hover:underline"
                   >
-                    <HiTrash />
+                    <HiTrash className="text-2xl" />
                   </button>
                 </td>
               </tr>
             ))}
+
+            
+
+
+
           </tbody>
         </table>
       </div>

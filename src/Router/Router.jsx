@@ -10,6 +10,7 @@ import TaskHome from "../Pages/TaskBoard/Home/Home";
 import AllTasks from "../Pages/TaskBoard/AllTasks/AllTasks";
 import ManageTask from "../Pages/TaskBoard/ManageTask/ManageTask";
 import AddTask from "../Pages/TaskBoard/AddTask/AddTask";
+import Update from "../Pages/TaskBoard/Update/Update";
 
 const Router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const Router = createBrowserRouter([
       {
         path: "/taskBoard/addTask",
         element: <AddTask></AddTask>,
+      },
+      {
+        path: "/taskBoard/update/:id",
+        element: <Update></Update>,
       },
     ],
   },

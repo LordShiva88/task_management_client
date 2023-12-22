@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaBars, FaClipboardList, FaHome, FaUser } from "react-icons/fa";
 import logo from "../assets/logo.png";
+import NavbarTask from "../Components/NavbarTask";
 
 const Dashboard = () => {
   const navLink = (
@@ -53,6 +54,7 @@ const Dashboard = () => {
               <h1>SURVEY SIFT</h1>
             </div>
           </div>
+          <NavbarTask />
           <Outlet></Outlet>
         </div>
         <div className="drawer-side">
@@ -78,6 +80,7 @@ const Dashboard = () => {
           </ul>
         </div>
         <div className="w-full ml-52">
+          <NavbarTask />
           <Outlet></Outlet>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+
 import {
   AiOutlineClockCircle,
   AiFillCheckCircle,
@@ -31,7 +31,7 @@ const TaskCard = ({ task }) => {
           Priority
         </span>
         <div>
-          {task.status === "to-do" && (
+          {task.status === "todo" && (
             <span className="text-red-500 font-bold bg-red-100 rounded-full px-2 py-1 flex items-center">
               <AiOutlineClockCircle className="mr-1" />
               To-Do
@@ -53,7 +53,7 @@ const TaskCard = ({ task }) => {
       </div>
       <div className="p-4">
         <h3 className="text-xl font-bold mb-2">{task.title}</h3>
-        <p className="text-gray-600 mb-4">{task.description}</p>
+        <p className="text-gray-600 mb-4">{task.description.slice(0, 100)}</p>
         <div className="flex items-center justify-between">
           <div className="flex items-center text-sm text-gray-500">
             <AiOutlineClockCircle className="mr-1" />
