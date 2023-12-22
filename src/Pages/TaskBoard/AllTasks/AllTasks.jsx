@@ -104,7 +104,6 @@ const AllTasks = () => {
                   <div className="h-1 rounded-full bg-yellow-500 "></div>
                 </div>
 
-
                 {tasks.map((task, index) => {
                   return task.status === "ongoing" ? (
                     <Draggable
@@ -142,7 +141,6 @@ const AllTasks = () => {
                 <div className="h-1 w-full bg-black rounded-full my-3">
                   <div className="h-1 rounded-full bg-green-500 "></div>
                 </div>
-
 
                 {tasks.map((task, index) => {
                   return task.status === "completed" ? (
