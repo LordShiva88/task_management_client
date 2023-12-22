@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBars, FaClipboardList, FaUser } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import { FaBars, FaClipboardList, FaHome, FaUser } from "react-icons/fa";
 import NavbarTask from "../Components/NavbarTask";
+import Logo from "../Components/Logo";
 
 const Dashboard = () => {
   const navLink = (
@@ -25,6 +25,15 @@ const Dashboard = () => {
         </NavLink>
       </li>
       <div className="divider"></div>
+      <li>
+        <NavLink
+          to="/"
+          className="flex items-center px-4 py-2 "
+        >
+          <FaHome className="mr-2" />
+          Home
+        </NavLink>
+      </li>
     </>
   );
   return (
@@ -44,8 +53,7 @@ const Dashboard = () => {
               </label>
             </div>
             <div className="flex-1 px-2 mx-2 navbar-end">
-              <img src={logo} alt="" className="w-10" />
-              <h1>SURVEY SIFT</h1>
+              <Logo></Logo>
             </div>
           </div>
           <NavbarTask />
@@ -59,8 +67,7 @@ const Dashboard = () => {
           ></label>
           <ul className="menu bg-gray-500 h-screen fixed z-10 px-5 text-white space-y-3">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="" className="w-10" />
-              <p className="text-xl font-bold text-red-400">Survey Sift</p>
+              <Logo />
             </div>
             {navLink}
           </ul>

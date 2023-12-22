@@ -5,6 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import banner from '../../assets/banner.jpg'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
@@ -34,10 +35,10 @@ const Login = () => {
     <div
       className="hero relative bg-cover bg-center h-screen"
       style={{
-        backgroundImage: `url(https://i.ibb.co/pxCYXmq/pexels-photo-268533.jpg)`,
+        backgroundImage: `url(${banner})`,
       }}
     >
-      <div className="hero-overlay bg-opacity-70"></div>
+      <div className="hero-overlay bg-opacity-80"></div>
 
       <div className="">
         <Helmet>

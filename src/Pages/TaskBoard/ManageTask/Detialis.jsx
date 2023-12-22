@@ -1,7 +1,7 @@
+import { HiPencil, HiTrash } from "react-icons/hi";
 import useAuth from "../../../Hooks/useAuth";
 import useTasks from "../../../Hooks/useTasks";
 import moment from "moment";
-import { HiPencil, HiTrash } from "react-icons/hi";
 import useAxios from "../../../Hooks/useAxios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -37,7 +37,6 @@ const Details = () => {
     });
   };
 
-  // Helper function to get priority color
   const getPriorityColor = (priority) => {
     switch (priority) {
       case "high":
@@ -46,10 +45,11 @@ const Details = () => {
         return "text-yellow-500";
       case "low":
         return "text-green-500";
+      default:
+        return "";
     }
   };
 
-  // Helper function to get status color
   const getStatusColor = (status) => {
     switch (status) {
       case "to-do":
@@ -66,72 +66,80 @@ const Details = () => {
   return (
     <div className="max-w-4xl mx-auto mt-8 p-6 bg-white rounded shadow-md">
       <h1 className="text-3xl font-bold mb-4 text-blue-600">All Tasks</h1>
-      <div className="overflow-x-auto">
-        <table className="w-full table-auto bg-white border border-collapse shadow-md">
-          {/* Table Head */}
-          <thead className="bg-blue-500 text-white">
-            <tr>
-              <th className="py-3 px-4">#</th>
-              <th className="py-3 px-4">Title</th>
-              <th className="py-3 px-4">Deadline</th>
-              <th className="py-3 px-4">Priority</th>
-              <th className="py-3 px-4">Status</th>
-              <th className="py-3 px-4">Actions</th>
-            </tr>
-          </thead>
-          {/* Table Body */}
-          <tbody>
-            {myTasks.map((task, index) => (
-              <tr
-                key={task._id}
-                className={index % 2 === 0 ? "bg-gray-100" : ""}
-              >
-                <td className="py-3 px-4">{index + 1}</td>
-                <td className="">
-                  <p className="py-3 font-bold text-blue-600">{task.title}</p>
-                  {task.description.slice(0, 50)}...
-                </td>
-
-                <td className="py-3 px-4">
-                  Post: {moment(task.date).format("MM-D-YY, h:mm")}
-                </td>
-                <td className="py-3 px-4">
-                  <span
-                    className={`text-sm font-bold ${getPriorityColor(
-                      task.priority
-                    )}`}
+      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div className="shadow-md overflow-x-auto border-b border-gray-200 sm:rounded-lg">
+            <table className="min-w-full divide-y divide-gray-200">
+              {/* Table Head */}
+              <thead className="bg-blue-500 text-white">
+                <tr>
+                  <th className="py-3 px-4 hidden sm:table-cell"> # </th>
+                  <th className="py-3 px-4">Title</th>
+                  <th className="py-3 px-4 hidden sm:table-cell"> Deadline </th>
+                  <th className="py-3 px-4 hidden sm:table-cell"> Priority </th>
+                  <th className="py-3 px-4 hidden sm:table-cell"> Status </th>
+                  <th className="py-3 px-4"> Actions </th>
+                </tr>
+              </thead>
+              {/* Table Body */}
+              <tbody className="bg-white divide-y divide-gray-200">
+                {myTasks.map((task, index) => (
+                  <tr
+                    key={task._id}
+                    className={index % 2 === 0 ? "bg-gray-100" : ""}
                   >
-                    {task.priority.charAt(0).toUpperCase() +
-                      task.priority.slice(1)}
-                  </span>
-                </td>
-                <td className="py-3 px-4">
-                  <span
-                    className={`text-sm font-bold ${getStatusColor(
-                      task.status
-                    )}`}
-                  >
-                    {task.status.charAt(0).toUpperCase() + task.status.slice(1)}
-                  </span>
-                </td>
-                <td className="py-3 px-4 flex">
-                  <Link
-                    to={`/taskBoard/update/${task._id}`}
-                    className="text-blue-500 hover:underline mx-2"
-                  >
-                    <HiPencil className="text-2xl" />
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(task._id)}
-                    className="text-red-500 hover:underline"
-                  >
-                    <HiTrash className="text-2xl" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    <td className="py-3 px-4 hidden sm:table-cell">
+                      {index + 1}
+                    </td>
+                    <td className="">
+                      <p className="py-3 font-bold text-blue-600">
+                        {task.title}
+                      </p>
+                      {task.description.slice(0, 50)}...
+                    </td>
+                    <td className="py-3 px-4 hidden sm:table-cell">
+                      Post: {moment(task.date).format("MM-D-YY, h:mm")}
+                    </td>
+                    <td className="py-3 px-4 hidden sm:table-cell">
+                      <span
+                        className={`text-sm font-bold ${getPriorityColor(
+                          task.priority
+                        )}`}
+                      >
+                        {task.priority.charAt(0).toUpperCase() +
+                          task.priority.slice(1)}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 hidden sm:table-cell">
+                      <span
+                        className={`text-sm font-bold ${getStatusColor(
+                          task.status
+                        )}`}
+                      >
+                        {task.status.charAt(0).toUpperCase() +
+                          task.status.slice(1)}
+                      </span>
+                    </td>
+                    <td className="py-3 px-4 flex">
+                      <Link
+                        to={`/taskBoard/update/${task._id}`}
+                        className="text-blue-500 hover:underline mx-2"
+                      >
+                        <HiPencil className="text-2xl" />
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(task._id)}
+                        className="text-red-500 hover:underline"
+                      >
+                        <HiTrash className="text-2xl" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   );

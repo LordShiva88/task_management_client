@@ -1,14 +1,20 @@
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import ProgressBar from "../../../Components/ProgressBar";
 import useTasks from "../../../Hooks/useTasks";
 import TaskCard from "./TaskCard";
 import useAxios from "../../../Hooks/useAxios";
 import { useState } from "react";
+import { IoIosCheckboxOutline } from "react-icons/io";
+import { SiProgress } from "react-icons/si";
+import { FcOk } from "react-icons/fc";
 
 const AllTasks = () => {
   const [tasks, refetch] = useTasks();
   const [allTasks, setTasks] = useState([]);
   const axios = useAxios();
+
+  const Todo = tasks.filter((task) => task.status === "todo");
+  const completed = tasks.filter((task) => task.status === "completed");
+  const ongoing = tasks.filter((task) => task.status === "ongoing");
 
   const updateTaskStatusInMongoDB = async (taskId, newStatus) => {
     await axios.put(`/tasks/status/${taskId}`, {
@@ -44,12 +50,19 @@ const AllTasks = () => {
 
   return (
     <div>
-      <ProgressBar></ProgressBar>
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="justify-around grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           <Droppable droppableId="todo">
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
+                <span className="flex items-center gap-2 text-red-500">
+                  <IoIosCheckboxOutline className="text-xl" />
+                  TO DO
+                  <span className="btn btn-sm rounded-full bg-red-500 text-white">
+                    {Todo.length}
+                  </span>
+                </span>
+
                 {tasks.map((task, index) => {
                   return task.status === "todo" ? (
                     <Draggable
@@ -77,6 +90,14 @@ const AllTasks = () => {
           <Droppable droppableId="ongoing">
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
+                <span className="flex items-center gap-2 text-yellow-500">
+                  <SiProgress className="text-xl" />
+                  IN PROGRESS{" "}
+                  <span className="btn btn-sm rounded-full bg-yellow-500 text-white">
+                    {ongoing.length}
+                  </span>
+                </span>
+
                 {tasks.map((task, index) => {
                   return task.status === "ongoing" ? (
                     <Draggable
@@ -104,6 +125,14 @@ const AllTasks = () => {
           <Droppable droppableId="completed">
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
+                <span className="flex items-center gap-2 text-green-500">
+                  <FcOk className="text-xl" />
+                  COMPLETE{" "}
+                  <span className="btn btn-sm rounded-full bg-green-500 text-white">
+                    {completed.length}
+                  </span>
+                </span>
+
                 {tasks.map((task, index) => {
                   return task.status === "completed" ? (
                     <Draggable

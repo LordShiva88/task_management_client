@@ -3,6 +3,7 @@ import logo from "../assets/logo.png";
 import { IoMdAdd, IoMdNotificationsOutline } from "react-icons/io";
 import useAuth from "../Hooks/useAuth";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 const NavbarTask = () => {
   const { logOut, user } = useAuth();
@@ -15,10 +16,10 @@ const NavbarTask = () => {
   };
 
   return (
-    <div className="navbar bg-base-100">
-      <div className="flex-1 items-center">
-        <img src={logo} alt="" className="w-10" />
-        <p className="text-xl font-bold text-red-400">Task Magnet</p>
+    <div className="navbar bg-base-100 flex justify-between">
+      <img src={logo} alt="" className="w-16 md:hidden flex" />
+      <div className="hidden md:flex">
+        <Logo />
       </div>
       <div className="flex-none md:gap-5 gap-2 flex items-center">
         <Link
@@ -77,10 +78,9 @@ const NavbarTask = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to={'/taskBoard/profile'} className="justify-between">Profile</Link>
-            </li>
-            <li>
-              <a>Settings</a>
+              <Link to={"/taskBoard/profile"} className="justify-between">
+                Profile
+              </Link>
             </li>
             <li>
               <button onClick={handleLogOut}>Log Out</button>
